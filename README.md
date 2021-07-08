@@ -9,6 +9,14 @@ Caso seja encontrada alguma vaga em qualquer unidade é gerado um dialog para o 
 
 ![Screen Shot 2021-07-08 at 14 40 11](https://user-images.githubusercontent.com/2111143/124967819-3db52880-dffb-11eb-8475-996ad9d971ac.png)
 
+### Configurações
+
+Um parâmetro é aceito para configurar o serviço de agendamento.
+
+Exemplo: 1476 é o valor padrão, que corresponde a vacinação de 30 a 34 anos.
+
+Você pode verificar no código do site de agendamento da PMV.
+
 ### Histórico
 
 Você pode colocar o script para funcionar nas tarefas agendadas (cron) de forma a realizar periodicamente (por exemplo, de 1 em 1 minuto).
@@ -25,3 +33,8 @@ Exemplo de configuração para cron:
 
 - Mac OS
 - PHP 7.0 ou superior
+
+## Disclaimer
+
+Script foi feito em caráter de teste e não tem qualquer fim comercial.
+Não me responsabilizo sobre qualquer forma de utilização do mesmo, indevida ou não. 

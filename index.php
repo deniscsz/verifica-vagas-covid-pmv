@@ -1,6 +1,11 @@
 <?php
 require 'vendor/autoload.php';
 
+$serv = 1476; //faixa dos 30 a 34 anos.
+if (isset($argv[1]) && $argv[1] && is_numeric($argv[1])) {
+    $serv = $argv[1];
+}
+
 function getMessageUnid($vagas, $description) {
     return "{$vagas} vagas disponíveis em {$description}.\n\n";
 }
@@ -9,7 +14,7 @@ function getCommandShell($message) {
 }
 
 $urlApi = 'https://agendamento.vitoria.es.gov.br/api/';
-$urlEndpointVagas = 'servicos/1476/unidades/vagas?_=' . time();
+$urlEndpointVagas = 'servicos/'.$serv.'/unidades/vagas?_=' . time();
 
 // Create a client with a base URI
 $client = new GuzzleHttp\Client(['base_uri' => $urlApi]);
@@ -20,6 +25,11 @@ $response = $client->request('GET', $urlEndpointVagas,[
 if ($response->getStatusCode() == 200) {
     $body = $response->getBody();
     $data = \json_decode((string) $body, true);
+
+    if (empty($data)) {
+        echo "Não foram encontradas unidades. Provavelmente algo de errado está acontecendo. Verifique o serviço consultado" . "\n";
+        exit(0);
+    }
 
     echo "Data: " . date("Y-m-d H:i:s") . "\n";
 
