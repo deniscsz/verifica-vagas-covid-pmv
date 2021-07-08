@@ -28,7 +28,7 @@ if ($response->getStatusCode() == 200) {
 
     if (empty($data)) {
         echo "Não foram encontradas unidades. Provavelmente algo de errado está acontecendo. Verifique o serviço consultado" . "\n";
-        exit(0);
+        exit(1);
     }
 
     echo "Data: " . date("Y-m-d H:i:s") . "\n";
